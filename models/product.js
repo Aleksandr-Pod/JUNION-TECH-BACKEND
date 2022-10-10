@@ -1,8 +1,8 @@
 const {Schema, model} = require('mongoose');
-const Joi = require('joi');
+// const Joi = require('joi');
 
 const productSchema = Schema({
-    name: {type: string},
+    name: {type: String},
     required: [true, "product name is required"]
 });
 
