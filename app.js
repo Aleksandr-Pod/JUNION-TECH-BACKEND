@@ -12,6 +12,7 @@ app.use("/users", usersRouter);
 app.use("/products", productsRouter);
 
 app.use((req, res) => {
+  console.log("no routes match");
   res.status(404).json({ message: "Not found" });
 });
 

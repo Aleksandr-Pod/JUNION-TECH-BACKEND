@@ -25,8 +25,8 @@ const userSchema = Schema(
 );
 
 const joiRegSchema = Joi.object({
-  name: Joi.string().min(1).max(12).message({
-    "any.required": "The name field must consist of at least 3 letters",
+  name: Joi.string().min(3).max(12).message({
+    "any.required": "The name field must consist of at least 3 letters and max 12 letters",
   }),
   email: Joi.string()
     .required()
