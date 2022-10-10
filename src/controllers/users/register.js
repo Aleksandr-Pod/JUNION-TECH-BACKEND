@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const createError = require('../../helpers/createError');
+const createError = require('../../src/helpers/createError');
 const {User} = require('../../models/user');
 
 const register = async (req, res) => {
