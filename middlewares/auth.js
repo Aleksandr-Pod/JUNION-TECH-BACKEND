@@ -10,7 +10,7 @@ const auth = async (req, res, next) => {
   const [bearer, token] = authorization.split(" ");
   try {
     if (bearer !== "Bearer") throw createError(401);
-    const { id } = jwt.verify(token, SECRET_KEY);
+    const {id} = jwt.verify(token, SECRET_KEY);
     const user = await User.findById(id);
     if (!user || !user.token) throw createError(401);
     req.user = user;

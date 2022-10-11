@@ -19,6 +19,10 @@ const userSchema = Schema(
     token: {
       type: String,
       default: null,
+    },
+    role: {
+      type: String,
+      default: "admin"
     }
   },
   { versionKey: false, timestamps: true }
