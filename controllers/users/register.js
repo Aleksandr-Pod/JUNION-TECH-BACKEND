@@ -5,7 +5,7 @@ const {User} = require('../../models/user');
 const register = async (req, res) => {
     const {name, email, password} = req.body;
     const user = await User.findOne({email});
-    if (user) throw createError(409);
+    if (user) throw createError(409, `User with email: ${email} already exist`);
     const hashPass = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
     await User.create({email, password: hashPass, name});
     res.json({
