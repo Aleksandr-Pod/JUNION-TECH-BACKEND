@@ -4,9 +4,10 @@ const Joi = require('joi');
 const productSchema = Schema({
     name: {type: String, required: [true, "product name is required"]},
     price: {type: Number},
-    catergory: {type: String},
+    category: {type: String},
     owner: {type: String, required: [true, "owner is required"]}
 }, { versionKey: false, timestamps: true });
+
 const joiAddProductSchema = Joi.object({
     name: Joi.string().min(2).max(50).required(),
     price: Joi.number().min(0),
