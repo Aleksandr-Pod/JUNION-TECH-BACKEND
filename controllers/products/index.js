@@ -1,4 +1,6 @@
-const addProduct = require('./addProduct');
-const deleteProduct = require('./deleteProduct');
+const addProduct = require('./add');
+const getAllProducts = require('./getAll');
+const deleteProduct = require('./delete');
+const updateProduct = require('./update');
 
-module.export = {addProduct, deleteProduct};
+module.exports = {addProduct, getAllProducts, deleteProduct, updateProduct};
