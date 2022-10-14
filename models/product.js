@@ -14,6 +14,12 @@ const joiAddProductSchema = Joi.object({
     category: Joi.string().min(2).max(20),
     owner: Joi.string().required()
 })
-
+const joiUpdateProductSchema = Joi.object({
+    name: Joi.string().min(2).max(50),
+    price: Joi.number().min(0),
+    category: Joi.string().min(2).max(20),
+    owner: Joi.string().required(),
+    id: Joi.string().required()
+})
 const Product = model('product', productSchema);
-module.exports = {Product, joiAddProductSchema};
+module.exports = {Product, joiAddProductSchema, joiUpdateProductSchema};
