@@ -6,7 +6,7 @@ const { auth, ctrlWrapper, validation } = require("../middlewares");
 const router = express.Router();
 
 router.post("/", auth, validation(joiAddProductSchema), ctrlWrapper(ctrl.addProduct));
-router.get("/", auth, ctrlWrapper(ctrl.getAllProducts));
+router.get("/", auth, ctrlWrapper(ctrl.getProducts));
 router.delete("/", auth, ctrlWrapper(ctrl.deleteProduct));
 router.put("/", auth, validation(joiUpdateProductSchema), ctrlWrapper(ctrl.updateProduct))
 

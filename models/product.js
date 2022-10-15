@@ -4,7 +4,7 @@ const Joi = require('joi');
 const productSchema = Schema({
     name: {type: String, required: [true, "product name is required"]},
     price: {type: Number},
-    category: {type: String},
+    category: {type: Array},
     owner: {type: String, required: [true, "owner is required"]}
 }, { versionKey: false, timestamps: true });
 
