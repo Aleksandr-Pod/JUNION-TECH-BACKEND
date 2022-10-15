@@ -1,9 +1,9 @@
-const express = require("express");
+// const express = require("express");
 const { products: ctrl} = require("../controllers");
 const { joiAddProductSchema, joiUpdateProductSchema } = require("../models/product");
 const { auth, ctrlWrapper, validation } = require("../middlewares");
 
-const router = express.Router();
+const router = require("express").Router();
 
 router.post("/", auth, validation(joiAddProductSchema), ctrlWrapper(ctrl.addProduct));
 router.get("/", auth, ctrlWrapper(ctrl.getProducts));
