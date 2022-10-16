@@ -9,7 +9,7 @@ const messages = {
 const createError = (status = 400, message = messages[status]) => {
     const error = new Error(message);
     error.status = status;
-    return error
+    return error;
 }
 
 module.exports = createError;
