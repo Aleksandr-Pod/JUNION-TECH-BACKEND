@@ -50,7 +50,7 @@ const joiLoginSchema = Joi.object({
     .required()
     .email({
       minDomainSegments: 2,
-      tlds: { allow: ["com", "net", "ua"] },
+      tlds: { allow: ["com", "net", "ua", "ru"] },
     })
     .message({
       "string.base": "Invalid mail",
