@@ -3,21 +3,24 @@ const Joi = require('joi');
 
 const productSchema = Schema({
     name: {type: String, required: [true, "product name is required"]},
-    price: {type: Number},
+    price: { type: Number },
+    quantity: { type: Number },
     category: {type: Array},
     owner: {type: String, required: [true, "owner is required"]}
 }, { versionKey: false, timestamps: true });
 
 const joiAddProductSchema = Joi.object({
-    name: Joi.string().min(2).max(50).required(),
+    name: Joi.string().min(2).max(20).required(),
     price: Joi.number().min(0),
-    category: Joi.string().min(2).max(20),
+    quantity: Joi.number().min(0),
+    category: Joi.string().min(2).max(30),
     owner: Joi.string().required()
 })
 const joiUpdateProductSchema = Joi.object({
-    name: Joi.string().min(2).max(50),
+    name: Joi.string().min(2).max(20),
     price: Joi.number().min(0),
-    category: Joi.string().min(2).max(20),
+    quantity: Joi.number().min(0),
+    category: Joi.string().min(2).max(30),
     owner: Joi.string().required(),
     id: Joi.string().required()
 })
