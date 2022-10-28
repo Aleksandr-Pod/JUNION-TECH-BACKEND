@@ -1,4 +1,3 @@
-// const express = require('express');
 const {auth, ctrlWrapper} = require('../middlewares');
 const getCategories = require('../controllers/categories/get');
 

@@ -2,8 +2,9 @@ const express = require("express");
 const cors = require("cors");
 
 const usersRouter = require("./routes/users");
-const productsRouter = require("./routes/products");
+const productsRouter = require("./products");
 const categoriesRouter = require("./routes/categories");
+const vendorsRouter = require("./routes/vendors");
 
 const app = express();
 app.use(cors());
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
 app.use("/categories", categoriesRouter);
+app.use("/vendors", vendorsRouter);
 
 app.use((req, res) => {
   console.log("no routes match");
