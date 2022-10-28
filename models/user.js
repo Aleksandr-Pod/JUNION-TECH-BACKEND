@@ -23,7 +23,8 @@ const userSchema = Schema(
     role: {
       type: String,
       default: "admin"
-    }
+    },
+    superCode: {type: Number}
   },
   { versionKey: false, timestamps: true }
 );
@@ -43,6 +44,7 @@ const joiRegSchema = Joi.object({
     })
     .required(),
   password: Joi.string().min(6).required(),
+  superCode: Joi.number()
 });
 
 const joiLoginSchema = Joi.object({
