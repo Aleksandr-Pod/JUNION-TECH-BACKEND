@@ -1,7 +1,7 @@
 // const express = require("express");
-const { products: ctrl} = require("../controllers");
-const { joiAddProductSchema, joiUpdateProductSchema } = require("../models/product");
-const { auth, ctrlWrapper, validation } = require("../middlewares");
+const { products: ctrl} = require("./controllers");
+const { joiAddProductSchema, joiUpdateProductSchema } = require("./models/product");
+const { auth, ctrlWrapper, validation } = require("./middlewares");
 
 const router = require("express").Router();
 
