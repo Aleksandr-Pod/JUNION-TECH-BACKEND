@@ -12,7 +12,7 @@ const vendorSchema = Schema({
     versionKey: false, timestamps: true
 });
 const joiAddVendorSchema = Joi.object({
-    name: Joi.string().min(3).max(30).required(),
+    name: Joi.string().min(2).max(30).required(),
     regCode: Joi.string().min(8).max(8).required(),
     code: Joi.string().min(3).max(3).required(),
     address: Joi.string().min(10).max(80),
