@@ -12,7 +12,7 @@ const addVendor = async (req, res) => {
     const result = await Vendor.findOne({ regCode });
     if (result) throw createError(409, "The vendor code already exist!")
     const data = await Vendor.create({ name, code, regCode, address, owner });
-    res.status(200).json({
+    res.status(201).json({
         message: "vendor created successfull",
         data
     })
