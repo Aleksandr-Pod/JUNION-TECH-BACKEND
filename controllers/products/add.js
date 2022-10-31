@@ -6,10 +6,10 @@ const addProduct = async(req, res) => {
     const {name, price = 0, quantity = 0, vendor = "000", category = "unSorted", owner} = req.body;
     const result = await Product.findOne({ name });
     if (result) throw createError(409, "The product already exist!");
-    const result2 = await Vendor.findOne({ vendor });
+    const result2 = await Vendor.findOne({ code: vendor });
     if (!result2) throw createError(404, `the vendor ${vendor} doesn't exist`);
     const { itemsCounter } = result2;
-    await Vendor.findOneAndUpdate({vendor}, {itemsCounter: itemsCounter+1})
+    await Vendor.findOneAndUpdate({code: vendor}, {itemsCounter: itemsCounter+1})
     const art = pad(itemsCounter); // код товара
     await Product.create({name, price, quantity, vendor, art, category: category.trim().replace(' ', '').split(','), owner});
     res.status(201).json({

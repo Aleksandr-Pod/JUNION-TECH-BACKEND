@@ -2,9 +2,8 @@ const {Product} = require('../../models/product');
 
 const getProducts = async (req, res) => {
     let data;
-    console.log(req.query)
-    if (req.query) data = await Product.find({ ...req.query, name: { "$regex": req.query.name } });
-    if (!req.query) data = await Product.find();
+    if (req.query.name) { data = await Product.find({ ...req.query, name: { "$regex": req.query.name } }) }
+    else { data = await Product.find(req.query) }
     res.status(200).json({
         quantity: data.length,
         data

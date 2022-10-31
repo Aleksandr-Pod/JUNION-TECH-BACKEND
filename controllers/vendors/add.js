@@ -5,7 +5,7 @@ const addVendor = async (req, res) => {
     const {
         name = "someName",
         code = "000",
-        regCode = genRegCode(),
+        regCode = "00000000",
         address = "United Kingdom, 23 Freedom str., Z563241",
         owner
     } = req.body;
@@ -17,6 +17,5 @@ const addVendor = async (req, res) => {
         data
     })
 }
-const genRegCode = () => (`${Math.floor(Math.random() * 90000000 + 10000000)}`).toString();
 
 module.exports = addVendor;
