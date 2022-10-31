@@ -13,20 +13,20 @@ const productSchema = Schema({
 
 const joiAddProductSchema = Joi.object({
     name: Joi.string().min(2).max(20).required(),
-    price: Joi.number().min(0),
-    quantity: Joi.number().min(0),
+    price: Joi.number().min(0).max(999999),
+    quantity: Joi.number().min(0).max(999),
     category: Joi.string().min(2).max(30),
-    vendor: Joi.string().min(3).max(3),
-    art: Joi.string().min(6).max(6),
+    vendor: Joi.string().regex(/^[0-9]{3}$/),
+    art: Joi.string().regex(/^[0-9]{4}$/),
     owner: Joi.string().required()
 })
 const joiUpdateProductSchema = Joi.object({
     name: Joi.string().min(2).max(20),
-    price: Joi.number().min(0),
-    quantity: Joi.number().min(0),
+    price: Joi.number().min(0).max(999999),
+    quantity: Joi.number().min(0).max(999),
     category: Joi.string().min(2).max(30),
-    vendor: Joi.string().min(3).max(3),
-    art: Joi.string().min(6).max(6),
+    vendor: Joi.string().regex(/^[0-9]{3}$/),
+    art: Joi.string().regex(/^[0-9]{4}$/),
     owner: Joi.string().required(),
     id: Joi.string().required()
 })

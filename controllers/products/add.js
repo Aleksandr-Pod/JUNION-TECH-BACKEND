@@ -11,10 +11,10 @@ const addProduct = async(req, res) => {
     const { itemsCounter } = result2;
     await Vendor.findOneAndUpdate({code: vendor}, {itemsCounter: itemsCounter+1})
     const art = pad(itemsCounter); // код товара
-    await Product.create({name, price, quantity, vendor, art, category: category.trim().replace(' ', '').split(','), owner});
+    const data = await Product.create({name, price, quantity, vendor, art, category: category.trim().replace(' ', '').split(','), owner});
     res.status(201).json({
-        message: "product added successfull",
-        data: {name, price, quantity, vendor, art, category, owner}
+        message: "product added successfully",
+        data
     })
 }
 const pad = (num) => {

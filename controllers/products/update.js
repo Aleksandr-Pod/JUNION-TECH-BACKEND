@@ -8,7 +8,7 @@ const updateProduct = async(req, res) => {
     const result = await Product.findByIdAndUpdate(id, {name, price, quantity, category: category?.replace(" ").split(','), vendor, owner}, {new:true});
     if (!result) throw createError(404);
     res.status(200).json({
-        message: 'updated successfull',
+        message: 'updated successfully',
         newData: result
     })
 }
