@@ -11,20 +11,21 @@ const vendorSchema = Schema({
 }, {
     versionKey: false, timestamps: true
 });
+
 const joiAddVendorSchema = Joi.object({
     name: Joi.string().min(2).max(30).required(),
-    regCode: Joi.string().min(8).max(8).required(),
-    code: Joi.string().min(3).max(3).required(),
+    regCode: Joi.string().min(8).max(8),
+    code: Joi.string().min(3).max(3),
     address: Joi.string().min(10).max(80),
     owner: Joi.string().required()
 })
-const joiUpdateVendorScjema = Joi.object({
-    vendorName: Joi.string().min(3).max(30),
-    vendorRegCode: Joi.string().min(8).max(8),
-    vendorInnerCode: Joi.string().min(3).max(3),
+const joiUpdateVendorSchema = Joi.object({
+    name: Joi.string().min(3).max(30),
+    regCode: Joi.string().min(8).max(8),
+    code: Joi.string().min(3).max(3),
     address: Joi.string().min(10).max(80),
     owner: Joi.string().required(),
     id: Joi.string().required()
 })
 const Vendor = model('vendor', vendorSchema)
-module.exports = {Vendor, joiAddVendorSchema, joiUpdateVendorScjema}
+module.exports = {Vendor, joiAddVendorSchema, joiUpdateVendorSchema}
