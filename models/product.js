@@ -26,6 +26,7 @@ const joiUpdateProductSchema = Joi.object({
     price: Joi.number().min(0).max(999999),
     quantity: Joi.number().min(0).max(999),
     category: Joi.string().min(2).max(30),
+    discountPrice: Joi.number().min(0).max(999999),
     vendor: Joi.string().regex(/^[0-9]{3}$/),
     art: Joi.string().regex(/^[0-9]{4}$/),
     owner: Joi.string().required(),
