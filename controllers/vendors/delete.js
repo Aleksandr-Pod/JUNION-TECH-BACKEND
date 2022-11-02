@@ -7,7 +7,7 @@ const deleteVendor = async (req, res) => {
     const result = await Vendor.findByIdAndRemove(id);
     if (!result) throw createError(404);
     res.status(200).json({
-        message: `vendor id=${id} deleted successfully`
+        message: `vendor deleted successfully`
     })
 }
 

@@ -6,6 +6,7 @@ const productSchema = Schema({
     price: { type: Number },
     quantity: { type: Number },
     category: { type: Array },
+    discountPrice: {type: Number, default: 0},
     vendor: {type: String, required: [true, "vendor code is required"]},
     art: { type: String, required: [true, 'product code is required'] },
     owner: {type: String, required: [true, "owner is required"]}

@@ -5,7 +5,6 @@ const vendorSchema = Schema({
     name: { type: String, required: [true, "vendor name is required"] },
     regCode: {type: String, required: [true, "vendor registration code is required"]},
     code: { type: String, required: [true, "vendor code is required"] },
-    itemsCounter: { type: Number, default: 0 },
     address: { type: String },
     owner: {type:String, required: [true, "owner is required"]}
 }, {
