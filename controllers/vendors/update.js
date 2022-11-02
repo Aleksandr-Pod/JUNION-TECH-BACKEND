@@ -7,7 +7,7 @@ const updateVendor = async (req, res) => {
     const result = await Vendor.findByIdAndUpdate( id, {name, regCode, code, address, owner}, {new:true});
     if (!result) throw createError(404);
     res.status(200).json({
-        message: `vendor updated successfull`,
+        message: `vendor updated successfully`,
         newData: result
     })
 }

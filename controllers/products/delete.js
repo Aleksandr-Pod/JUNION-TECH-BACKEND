@@ -7,7 +7,7 @@ const deleteProduct = async(req, res) => {
     const result = await Product.findByIdAndRemove(id);
     if (!result) throw createError(404);
     res.status(200).json({
-        message: `product id=${id} deleted successfull`
+        message: `product id=${id} deleted successfully`
     })
 }
 
