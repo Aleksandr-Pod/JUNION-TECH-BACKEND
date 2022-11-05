@@ -2,7 +2,9 @@ const { Schema, model } = require("mongoose");
 
 const sysSchema = Schema({
     articul: { type: Number },
-    V: {type: Number}
+    V: { type: Number },
+    superPass: { type: String },
+    role: {type: String}
 })
 
 const Sys = model("sys", sysSchema);
