@@ -13,11 +13,12 @@ const register = async (req, res) => {
     const hashPass = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
     const result = await User.create({ name, email, password: hashPass, role });
     //  Auto login ...
-    const token = jwt.sign({ id: result._id }, process.env.SECRET_KEY);
-    await User.findByIdAndUpdate(result._id, { token });
+    const { _id } = result;
+    const token = jwt.sign({ id: _id }, process.env.SECRET_KEY);
+    await User.findByIdAndUpdate(_id, { token });
     res.status(201).json({
         message: "New user created and logged in", 
-        data: { name, email, role, token}
+        user: { _id, name, email, role, token}
     })
 };
 
