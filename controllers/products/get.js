@@ -9,7 +9,6 @@ const getProducts = async (req, res) => {
     })
 } 
 const prepareQuery = ({ query }) => {
-    console.log("query:", query)
     if (query.name) query = { ...query, name: { "$regex": query.name } };
     if (query.owner) query = { ...query, owner: { "$regex": query.owner } };
     if (query.price_min || query.price_max) {
