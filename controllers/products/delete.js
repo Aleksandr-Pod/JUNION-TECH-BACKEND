@@ -6,7 +6,7 @@ const deleteProduct = async(req, res) => {
     if (!id) throw createError(400, 'id is required');
     const result = await Product.findByIdAndRemove(id);
     if (!result) throw createError(404);
-    res.status(200).json({
+    res.json({
         message: `product id=${id} deleted successfully`
     })
 }
