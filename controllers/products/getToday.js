@@ -10,15 +10,24 @@ const getTodayProducts = async (req, res) => {
     myDate.setDate(myDate.getDate() + 1);
     const to = myDate.toISOString();
 
-    const data = await Product.find({
+    const createdToday = await Product.find({
         "createdAt": {
             $gte: from,
-            $lt: to
+            $lt: to,
         }
     });
+    const deletedToday = await Product.find({
+        "updatedAt": {
+            $gte: from,
+            $lt: to,
+        },
+        "status": "deleted"
+    });
     res.status(200).json({
-        quantity: data.length,
-        data
+        createdQuantity: createdToday.length,
+        createdToday,
+        deletedQantity: deletedToday.length,
+        deletedToday,
     })
 } 
 

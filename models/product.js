@@ -8,6 +8,7 @@ const productSchema = Schema({
     unit: {type: String},
     category: { type: Array },
     discountPrice: {type: Number, default: 0},
+    status: {type: String, default: "present"},
     vendor: {type: String, required: [true, "vendor code is required"]},
     art: { type: String, required: [true, 'product code is required'] },
     owner: {type: String, required: [true, "owner is required"]}
@@ -19,6 +20,7 @@ const joiAddProductSchema = Joi.object({
     quantity: Joi.number().min(0).max(999),
     unit: Joi.string().valid("pcs", "kg"),
     category: Joi.string().min(2).max(30),
+    status: Joi.string().valid("deleted", "present", "ordered"),
     vendor: Joi.string().regex(/^[0-9]{3}$/),
     art: Joi.string().regex(/^[0-9]{4}$/),
     owner: Joi.string().required()
@@ -28,6 +30,7 @@ const joiUpdateProductSchema = Joi.object({
     price: Joi.number().min(0).max(999999),
     quantity: Joi.number().min(0).max(999),
     unit: Joi.string().valid("pcs", "kg"),
+    status: Joi.string().valid("deleted", "present", "ordered"),
     category: Joi.string().min(2).max(30),
     discountPrice: Joi.number().min(0).max(999999),
     vendor: Joi.string().regex(/^[0-9]{3}$/),
