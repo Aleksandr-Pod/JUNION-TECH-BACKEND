@@ -1,5 +1,5 @@
 {
-  "name": "template",
+  "name": "Junion-tech-backend",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -19,7 +19,8 @@
     "express": "4.17.1",
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.4.0"
+    "mongoose": "^6.4.0",
+    "nodemailer": "^6.8.0"
   },
   "devDependencies": {
     "eslint": "7.19.0",
