@@ -1,7 +1,7 @@
 const {Product} = require('../../models/product');
 
 const getProducts = async (req, res) => {
-    if (Object.keys(req.query).length === 0) req.query = prepareQuery(req);
+    if (Object.keys(req.query).length) req.query = prepareQuery(req);
     const result = await Product.find(req.query);
     res.status(200).json({
         qty: result.length,
