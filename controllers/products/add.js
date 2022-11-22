@@ -2,7 +2,6 @@ const createError = require('../../helpers/createError');
 const { Product } = require('../../models/product');
 const { Vendor } = require('../../models/vendor');
 const Sys = require('../../models/sys');
-require('dotenv').config();
 
 const addProduct = async (req, res) => {
     const { 
