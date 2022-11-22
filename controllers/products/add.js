@@ -16,8 +16,6 @@ const addProduct = async (req, res) => {
     } = req.body;
  
     const result = await Product.findOne({ name });
-    console.log(result)
-    
     if (result & result?.status !== "deleted") throw createError(409, "The product already exist!");
 
     const result2 = await Vendor.findOne({ code: vendor });
@@ -26,6 +24,7 @@ const addProduct = async (req, res) => {
     const { articul } = await Sys.findByIdAndUpdate(process.env.SYS_ID, { $inc: { articul: 1 }});
 
     const art = pad(articul); // make product code
+    
     const data = await Product.create({name, price, quantity, unit, status, vendor, art, category: category.trim().replace(' ', '').split(','), owner});
     res.status(201).json({
         message: "product added successfully",

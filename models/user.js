@@ -30,11 +30,10 @@ const userSchema = Schema(
 );
 
 const joiRegSchema = Joi.object({
-  name: Joi.string().min(3).max(12).message({
-    "any.required": "The name field must consist of at least 3 letters and max 12 letters",
+  name: Joi.string().min(3).max(60).message({
+    "any.required": "The name field must consist of at least 3 letters and max 60 letters",
   }),
   email: Joi.string()
-    .required()
     .email({
       minDomainSegments: 2,
       // tlds: { allow: ["com", "net", "ua", "ru", "by"] },
@@ -43,22 +42,23 @@ const joiRegSchema = Joi.object({
       "string.base": "Invalid mail",
     })
     .required(),
-  password: Joi.string().min(6).required(),
-  superCode: Joi.number()
+  password: Joi.string().min(6).max(20)
+    .pattern(/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).*)\S$/)
+    .required(),
+  superCode: Joi.string().min(3).max(3)
 });
 
 const joiLoginSchema = Joi.object({
   email: Joi.string()
-    .required()
     .email({
       minDomainSegments: 2,
-      tlds: { allow: ["com", "net", "ua", "ru", "by"] },
+      // tlds: { allow: ["com", "net", "ua", "ru", "by"] },
     })
     .message({
       "string.base": "Invalid mail",
     })
     .required(),
-  password: Joi.string().min(6).required(),
+  password: Joi.string().min(6).max(20).pattern(/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).*)\S$/).required(),
 });
 
 const User = model("user", userSchema);
