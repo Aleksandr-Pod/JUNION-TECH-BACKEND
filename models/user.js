@@ -43,7 +43,7 @@ const joiRegSchema = Joi.object({
     })
     .required(),
   password: Joi.string().min(6).max(20)
-    .pattern(/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).*)\S$/)
+    .pattern(/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).*)(?=\S*?[@#$%.?/&!-])\S$/)
     .required(),
   superCode: Joi.string().min(3).max(3)
 });
@@ -58,7 +58,8 @@ const joiLoginSchema = Joi.object({
       "string.base": "Invalid mail",
     })
     .required(),
-  password: Joi.string().min(6).max(20).pattern(/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).*)\S$/).required(),
+  password: Joi.string().min(6).max(20)
+    .pattern(/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).*)(?=\S*?[@#$%.?/&!-])\S$/).required()
 });
 
 const User = model("user", userSchema);
