@@ -21,8 +21,8 @@ const joiAddProductSchema = Joi.object({
     unit: Joi.string().valid("pcs", "kg"),
     category: Joi.string().min(2).max(30),
     status: Joi.string().valid("deleted", "present", "ordered"),
-    vendor: Joi.string().regex(/^[0-9]{3}$/),
-    art: Joi.string().regex(/^[0-9]{4}$/),
+    vendor: Joi.string(),
+    art: Joi.string(),
     owner: Joi.string().required()
 })
 const joiUpdateProductSchema = Joi.object({
@@ -33,8 +33,8 @@ const joiUpdateProductSchema = Joi.object({
     status: Joi.string().valid("deleted", "present", "ordered"),
     category: Joi.string().min(2).max(30),
     discountPrice: Joi.number().min(0).max(999999),
-    vendor: Joi.string().regex(/^[0-9]{3}$/),
-    art: Joi.string().regex(/^[0-9]{4}$/),
+    vendor: Joi.string(),
+    art: Joi.string(),
     owner: Joi.string().required(),
     id: Joi.string().required()
 })

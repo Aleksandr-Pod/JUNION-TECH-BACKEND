@@ -17,7 +17,7 @@ const addVendor = async (req, res) => {
 }
 
 const getVendorCounter = async () => {
-    const {vendorsCount} = await Sys.findByIdAndUpdate(process.env.SYS_ID, { $inc: { vendorsCount: 1 } });
+    const {vendorsCount} = await Sys.findByIdAndUpdate(process.env.SYS_ID, { $inc: { vendorsCount: 1 } }, {new: true});
     if (vendorsCount < 10) return `00${vendorsCount}`;
     if (vendorsCount < 100) return `0${vendorsCount}`;
     return `${vendorsCount}`;
