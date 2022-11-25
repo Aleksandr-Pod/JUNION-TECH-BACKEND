@@ -38,6 +38,8 @@ const joiRegSchema = Joi.object({
       minDomainSegments: 2,
       // tlds: { allow: ["com", "net", "ua", "ru", "by"] },
     })
+    .min(7)
+    .max(50)
     .message({
       "string.base": "Invalid mail",
     })
@@ -54,6 +56,8 @@ const joiLoginSchema = Joi.object({
       minDomainSegments: 2,
       // tlds: { allow: ["com", "net", "ua", "ru", "by"] },
     })
+    .min(7)
+    .max(50)
     .message({
       "string.base": "Invalid mail",
     })
