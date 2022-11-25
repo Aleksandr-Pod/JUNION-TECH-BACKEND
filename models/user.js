@@ -58,8 +58,7 @@ const joiLoginSchema = Joi.object({
       "string.base": "Invalid mail",
     })
     .required(),
-  password: Joi.string().min(6).max(20)
-    .pattern(/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).*)(?=\S*?[@#$%.?/&!-])\S$/).required()
+  password: Joi.string().min(6).max(20).required()
 });
 
 const User = model("user", userSchema);
