@@ -3,17 +3,21 @@ const createError = require("../../helpers/createError");
 const {User} = require("../../models/user");
 
 const checkVerificationToken = async(req, res) => {
+  console.log("checkVerificationToken")
   const {verificationToken} = req.params;
-  const user = User
+
+  const user = await User
     .findOne({verificationToken})
-    .select({email: 1, role: 1})
-  ;
+    .select({email: 1, role: 1});
+
   if (!user) throw createError(404, "no user with verificationToken:" + verificationToken);
   
   user.token = jwt.sign({ id: user._id }, process.env.SECRET_KEY);
-  user.save();
+  user.verificationToken = null;
+  await user.save();
 
-  res.send({user});
+  res.redirect("localhost:3030/users/changingPass");
+  // res.send({user});
 }
 
 module.exports = checkVerificationToken;

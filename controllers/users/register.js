@@ -2,9 +2,9 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const createError = require('../../helpers/createError');
 const Sys = require('../../models/sys');
-const {User} = require('../../models/user');
+const { User } = require('../../models/user');
 
-const register = async (req, res) => {
+const register = async ( req, res ) => {
   const { SYS_ID, SECRET_KEY } = process.env;
   const { name, email, password, superCode } = req.body;
   const { superPass, role } = await Sys.findById(SYS_ID);
@@ -20,7 +20,9 @@ const register = async (req, res) => {
 
   //  Auto login ...
   const { _id } = result;
+  // console.time();
   result.token = jwt.sign({ id: _id }, SECRET_KEY);
+  // console.timeEnd();
   result.save();
 
   res.status(201).json({

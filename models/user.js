@@ -20,6 +20,10 @@ const userSchema = Schema(
       type: String,
       default: null,
     },
+    verificationToken: {
+      type: String, 
+      default: null
+    },
     role: {
       type: String,
       default: "admin"
@@ -45,7 +49,10 @@ const joiRegSchema = Joi.object({
     })
     .required(),
   password: Joi.string().min(6).max(20)
-    .pattern(/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).*)(?=\S*?[@#$%.?/&!-])\S$/)
+    .pattern(/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])(?=\S*?[@#$%.?/&!\-+=_]).*)\S$/)
+    .message({"string.pattern.base":
+      "The password should contain one capital letter, one small letter, one figure and one of symbols @#$%.?/&!-+=_"
+    })
     .required(),
   superCode: Joi.string().min(3).max(3)
 });

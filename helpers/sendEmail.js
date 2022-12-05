@@ -1,21 +1,18 @@
 const nodemailer = require('nodemailer')
 require('dotenv').config();
 
-const config = {
-  host: 'smtp.meta.ua',
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
   port: 465,
   secure: true,
   auth: {
-    user: 'stdfire@meta.ua',
-    pass: process.env.SECRET_KEY,
+    user: 'stdfire@gmail.com',
+    pass: process.env.GMAIL_PASS,
   },
-}
-
-const transporter = nodemailer.createTransport(config)
+})
 
 const sendEmail = (mail) => {
-    console.log("Mailer config:", config)
-    mail.from = "stdfire@meta.ua"
+    mail.from = "stdfire@gmail.com"
     transporter.sendMail(mail)
         .then(() => console.log('mail sended'))
         .catch(err => console.log(err.message))
