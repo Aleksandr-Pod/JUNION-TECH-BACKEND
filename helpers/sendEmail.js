@@ -1,4 +1,5 @@
-const nodemailer = require('nodemailer')
+const nodemailer = require('nodemailer');
+// const createError = require('./createError');
 require('dotenv').config();
 
 const transporter = nodemailer.createTransport({
@@ -13,7 +14,7 @@ const transporter = nodemailer.createTransport({
 
 const sendEmail = (mail) => {
     mail.from = "stdfire@gmail.com"
-    transporter.sendMail(mail)
+    transporter.sendMail(mail, err => { throw err })
         .then(() => console.log('mail sended'))
         .catch(err => console.log(err.message))
 }
