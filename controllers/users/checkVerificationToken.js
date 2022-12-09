@@ -1,14 +1,14 @@
 const jwt = require('jsonwebtoken');
 const createError = require("../../helpers/createError");
-const {User} = require("../../models/user");
+const { User } = require("../../models/user");
 
 const checkVerificationToken = async(req, res) => {
-  console.log("checkVerificationToken")
-  const {verificationToken} = req.params;
+
+  const { verificationToken } = req.body;
 
   const user = await User
-    .findOne({verificationToken})
-    .select({email: 1, role: 1});
+    .findOne({ verificationToken })
+    .select({ email: 1, role: 1 });
 
   if (!user) throw createError(404, "no user with verificationToken:" + verificationToken);
   
@@ -16,8 +16,7 @@ const checkVerificationToken = async(req, res) => {
   user.verificationToken = null;
   await user.save();
 
-  res.redirect("localhost:3030/users/changingPass");
-  // res.send({user});
+  res.send({ user });
 }
 
 module.exports = checkVerificationToken;

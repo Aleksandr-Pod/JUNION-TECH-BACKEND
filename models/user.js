@@ -54,7 +54,7 @@ const joiRegSchema = Joi.object({
       "The password should contain one capital letter, one small letter, one figure and one of symbols @#$%.?/&!-+=_"
     })
     .required(),
-  superCode: Joi.string().min(3).max(3)
+  superCode: Joi.string().min(3).max(3).required()
 });
 
 const joiLoginSchema = Joi.object({
@@ -72,6 +72,16 @@ const joiLoginSchema = Joi.object({
   password: Joi.string().min(6).max(20).required()
 });
 
+const joiChangePassSchema = Joi.object({
+  password: Joi.string().min(6).max(20)
+  .pattern(/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])(?=\S*?[@#$%.?/&!\-+=_]).*)\S$/)
+  .message({"string.pattern.base":
+    "The password should contain one capital letter, one small letter, one figure and one of symbols @#$%.?/&!-+=_"
+  })
+  .required(),
+  owner: Joi.string()
+});
+
 const User = model("user", userSchema);
 
-module.exports = { User, joiRegSchema, joiLoginSchema };
+module.exports = { User, joiRegSchema, joiLoginSchema, joiChangePassSchema };

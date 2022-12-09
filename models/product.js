@@ -15,7 +15,7 @@ const productSchema = Schema({
 }, { versionKey: false, timestamps: true });
 
 const joiAddProductSchema = Joi.object({
-    name: Joi.string().min(2).max(20).required(),
+    name: Joi.string().min(2).max(50).required(),
     price: Joi.number().min(0).max(999999),
     quantity: Joi.number().min(0).max(999),
     unit: Joi.string().valid("pcs", "kg"),
@@ -26,7 +26,7 @@ const joiAddProductSchema = Joi.object({
     owner: Joi.string().required()
 })
 const joiUpdateProductSchema = Joi.object({
-    name: Joi.string().min(2).max(20),
+    name: Joi.string().min(2).max(50),
     price: Joi.number().min(0).max(999999),
     quantity: Joi.number().min(0).max(999),
     unit: Joi.string().valid("pcs", "kg"),
