@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 
 const sendEmail = (mail) => {
     mail.from = "stdfire@gmail.com"
-    transporter.sendMail(mail, err => { throw err })
+    transporter.sendMail(mail)
         .then(() => console.log('mail sended'))
         .catch(err => console.log(err.message))
 }
