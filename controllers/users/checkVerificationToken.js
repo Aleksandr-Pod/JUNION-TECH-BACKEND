@@ -4,13 +4,13 @@ const { User } = require("../../models/user");
 
 const checkVerificationToken = async(req, res) => {
 
-  const { verificationToken } = req.body;
+  const { verifyToken } = req.body;
 
   const user = await User
-    .findOne({ verificationToken })
+    .findOne({ verificationToken: verifyToken })
     .select({ email: 1, role: 1 });
 
-  if (!user) throw createError(404, "no user with verificationToken:" + verificationToken);
+  if (!user) throw createError(404, "no user with verificationToken:" + verifyToken);
   
   user.token = jwt.sign({ id: user._id }, process.env.SECRET_KEY);
   user.verificationToken = null;
