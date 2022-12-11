@@ -5,6 +5,7 @@ const { User } = require("../../models/user");
 const checkVerificationToken = async(req, res) => {
 
   const { verifyToken } = req.body;
+  if (!verifyToken) throw createError(400, `verifyToken ${verifyToken} required`)
 
   const user = await User
     .findOne({ verificationToken: verifyToken })
