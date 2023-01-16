@@ -21,8 +21,6 @@ const addProduct = async (req, res) => {
     const result2 = await Vendor.findOne({ code: vendor });
     if (!result2) throw createError(404, `the vendor ${ vendor } doesn't exist`);
 
-    
-
     const art = await pad(); // make product code
     
     const data = await Product.create({ name, price, quantity, unit, status, vendor, art, category: category.trim().replace(' ', '').split(','), owner});
